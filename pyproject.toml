@@ -1,0 +1,35 @@
+[project]
+name = "ai-content-factory"
+version = "1.0.0"
+description = "AI-driven multi-platform content factory built on Make.com, Notion, OpenAI, and Pillow."
+readme = "README.md"
+authors = [{ name = "Kirill Hat" }]
+license = { text = "MIT" }
+requires-python = ">=3.10"
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+extend-exclude = ["scripts/legacy", "data", "make_blueprints/exports"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM"]
+ignore = [
+    "E501",  # line too long — already 120, no need for stricter
+    "B008",  # mutable default in argument
+    "SIM117", # nested with statements OK
+]
+
+[tool.ruff.lint.per-file-ignores]
+"make_blueprints/*.py" = ["E402"]  # imports after module docstrings are fine
+"scripts/*.py" = ["E402"]
+"tests/*.py" = ["E402"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --tb=short"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+]

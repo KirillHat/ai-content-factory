@@ -1,0 +1,30 @@
+services:
+  factory:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - ./make_blueprints/exports:/app/make_blueprints/exports
+    command: ["python", "-m", "app.niche_history"]
+
+  writer:
+    build: .
+    env_file:
+      - .env
+    command: ["python", "-m", "make_blueprints.03_writer"]
+    profiles: ["manual"]
+
+  publisher-telegram:
+    build: .
+    env_file:
+      - .env
+    command: ["python", "-m", "make_blueprints.06_publisher_telegram"]
+    profiles: ["manual"]
+
+  publisher-multi:
+    build: .
+    env_file:
+      - .env
+    command: ["python", "-m", "make_blueprints.08_publisher_multi"]
+    profiles: ["manual"]

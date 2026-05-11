@@ -1,0 +1,31 @@
+name,url,type,category,status,priority,notes
+Indie Hackers,https://feeds.indiehackers.com/articles,rss,blog,active,8,Founder stories with revenue numbers - high ICP fit
+Habr AI Hub,https://habr.com/ru/rss/hub/artificial_intelligence/all/,rss,habr,active,7,Russian-language AI/ML community
+vc.ru,https://vc.ru/rss,rss,vc,active,7,Russian startup and tech publication
+Stratechery,https://stratechery.com/feed/,rss,blog,active,6,Strategic analysis of tech industry by Ben Thompson
+Y Combinator Blog,https://www.ycombinator.com/blog/rss.xml,rss,blog,active,7,YC official blog with founder advice
+SaaStr,https://www.saastr.com/feed/,rss,blog,active,7,SaaS-specific business insights
+Tom Tunguz Blog,https://tomtunguz.com/index.xml,rss,blog,active,6,Redpoint Ventures partner on data and SaaS
+NoCode.tech,https://www.nocode.tech/articles/rss.xml,rss,blog,active,8,No-code tools coverage with high ICP fit
+Marketing AI Institute,https://www.marketingaiinstitute.com/blog/rss.xml,rss,blog,active,7,Marketing automation case studies
+Hacker Noon Tech,https://hackernoon.com/feed,rss,blog,active,5,Tech blog with practical guides
+Habr No-code Hub,https://habr.com/ru/rss/hub/no_code/all/,rss,habr,active,6,Russian-language no-code community
+vc.ru AI tag,https://vc.ru/rss/ai,rss,vc,active,8,Russian AI-tagged content stream
+r/Entrepreneur,https://www.reddit.com/r/Entrepreneur/top.json?t=day,api,reddit,active,8,Top entrepreneur posts daily - require User-Agent header
+r/SmallBusiness,https://www.reddit.com/r/smallbusiness/top.json?t=day,api,reddit,active,7,Small business operational discussions
+r/Automate,https://www.reddit.com/r/automate/top.json?t=day,api,reddit,active,9,Workflow automation including Make/n8n/Zapier
+r/SaaS,https://www.reddit.com/r/SaaS/top.json?t=day,api,reddit,active,8,SaaS tools and metrics discussions
+r/NoCode,https://www.reddit.com/r/nocode/top.json?t=day,api,reddit,active,8,No-code building community
+r/IndieHackers,https://www.reddit.com/r/indiehackers/top.json?t=day,api,reddit,active,7,Indie founder community
+r/Marketing,https://www.reddit.com/r/marketing/top.json?t=day,api,reddit,active,6,General marketing discussions
+r/Startups,https://www.reddit.com/r/startups/top.json?t=day,api,reddit,active,6,Startup founder discussions
+Product Hunt,https://api.producthunt.com/v2/api/graphql,api,producthunt,active,9,Daily new AI tools - GraphQL endpoint, requires Bearer token
+Hacker News AI,https://hn.algolia.com/api/v1/search?tags=story&query=AI%20OR%20automation%20OR%20no-code&numericFilters=points>50&hitsPerPage=50,api,hn,active,9,Algolia API - free no auth - filter on points>50
+GitHub Trending,https://api.apify.com/v2/acts/epctex~github-trending-scraper/run-sync-get-dataset-items,api,github,active,5,Via Apify scraper - requires APIFY_TOKEN in URL
+Liam Ottley YouTube,https://www.googleapis.com/youtube/v3/search?part=snippet&forHandle=@liamottley&order=date&maxResults=10,api,youtube,active,8,AI agency tutorials - need channel_id field added to Sources DB
+Matt Wolfe YouTube,https://www.googleapis.com/youtube/v3/search?part=snippet&forHandle=@mreflow&order=date&maxResults=10,api,youtube,active,8,AI news and tools daily
+AI Foundations YouTube,https://www.googleapis.com/youtube/v3/search?part=snippet&forHandle=@AI-Foundations&order=date&maxResults=10,api,youtube,active,7,AI agency starter content
+Greg Isenberg YouTube,https://www.googleapis.com/youtube/v3/search?part=snippet&forHandle=@GregIsenberg&order=date&maxResults=10,api,youtube,active,7,Startup ideas and AI businesses
+AI Explained YouTube,https://www.googleapis.com/youtube/v3/search?part=snippet&forHandle=@aiexplained-official&order=date&maxResults=10,api,youtube,active,6,Deep AI model coverage
+Pat Walls YouTube,https://www.googleapis.com/youtube/v3/search?part=snippet&forHandle=@patwalls&order=date&maxResults=10,api,youtube,active,7,Starter Story founder interviews
+NoCodeMBA YouTube,https://www.googleapis.com/youtube/v3/search?part=snippet&forHandle=@NoCodeMBA&order=date&maxResults=10,api,youtube,active,6,No-code course content

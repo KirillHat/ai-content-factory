@@ -1,0 +1,62 @@
+# Secrets
+.env
+.env.*
+!.env.example
+*.key
+*credentials*.json
+*.pem
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.eggs/
+*.egg-info/
+.tox/
+.nox/
+
+# Testing / coverage
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+coverage.xml
+
+# Data / state (gitignored — local production state)
+data/
+!data/.gitkeep
+*.db
+*.sqlite
+*.sqlite3
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Build artifacts
+dist/
+build/
+*.so
+
+# Project-specific
+make_blueprints/exports/*.json
+!make_blueprints/exports/.gitkeep
+scripts/legacy/
+data/blueprint_exports_legacy/
+
+# Generated images
+screenshots/*.png
+!screenshots/sample_*.png

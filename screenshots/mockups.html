@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AI Content Factory — mockups</title>
+<style>
+  :root {
+    --bg: #faf8f4;
+    --navy: #1c2640;
+    --soft: #69645f;
+    --accent: #4266b2;
+    --tg: #229ed9;
+    --ig: #c13584;
+    --li: #0a66c2;
+    --pin: #e60023;
+    --x: #14171a;
+    --threads: #000;
+    --slack: #4a154b;
+    --notion: #000;
+    --make: #6d00cc;
+    --openai: #10a37f;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font: 14px/1.45 -apple-system, "SF Pro Text", "Segoe UI", system-ui, sans-serif; background: #eef0f3; color: var(--navy); padding: 24px; }
+  .grid { display: grid; gap: 24px; max-width: 1280px; margin: 0 auto; }
+  .scene { background: white; border-radius: 16px; padding: 24px; box-shadow: 0 4px 24px rgba(0,0,0,.06); }
+  .scene h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--soft); margin-bottom: 16px; }
+
+  /* Architecture diagram */
+  .arch { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; padding: 24px 8px; background: var(--bg); border-radius: 12px; }
+  .node { padding: 12px 16px; border-radius: 10px; font-weight: 600; color: white; min-width: 88px; text-align: center; font-size: 13px; }
+  .arrow { color: var(--soft); font-size: 24px; }
+  .node.notion { background: var(--notion); }
+  .node.openai { background: var(--openai); }
+  .node.make { background: var(--make); }
+  .node.dalle { background: linear-gradient(135deg, #10a37f, #2b9d12); }
+  .node.tg { background: var(--tg); }
+  .node.ig { background: var(--ig); }
+  .node.li { background: var(--li); }
+  .node.pin { background: var(--pin); }
+  .node.x { background: var(--x); }
+  .node.threads { background: var(--threads); }
+  .node.slack { background: var(--slack); }
+  .node.buffer { background: #168eea; }
+
+  /* Card preview */
+  .card-preview { width: 360px; aspect-ratio: 4/5; background: var(--bg); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; }
+  .card-preview .top { display: flex; align-items: center; justify-content: space-between; }
+  .card-preview .name { font: 700 36px "Avenir Next", system-ui, sans-serif; color: var(--navy); }
+  .card-preview .domain { font-size: 11px; color: var(--soft); margin-top: 6px; letter-spacing: 0.3px; }
+  .card-preview .logo { width: 80px; height: 80px; background: white; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,.06); display: flex; align-items: center; justify-content: center; font-size: 36px; }
+  .card-preview .desc { color: var(--soft); margin-top: 28px; font-size: 13px; line-height: 1.5; }
+  .card-preview .divider { height: 1px; background: rgba(0,0,0,.06); margin: 24px 0 16px; }
+  .card-preview .stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .card-preview .stat { background: white; border-radius: 12px; padding: 12px 10px; box-shadow: 0 2px 8px rgba(0,0,0,.04); }
+  .card-preview .stat-label { color: var(--soft); font-size: 9px; text-transform: lowercase; }
+  .card-preview .stat-value { font: 700 17px "Avenir Next", system-ui, sans-serif; margin-top: 6px; }
+  .card-preview .footer { margin-top: auto; background: var(--navy); color: white; margin-left: -28px; margin-right: -28px; margin-bottom: -28px; padding: 16px; text-align: center; border-radius: 0 0 16px 16px; }
+  .card-preview .footer .brand { font-weight: 700; font-size: 14px; }
+  .card-preview .footer .tagline { font-size: 9px; color: #aab9d7; margin-top: 4px; }
+
+  /* Platform-comparison table */
+  .platforms { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+  .platform { background: var(--bg); padding: 12px; border-radius: 10px; text-align: center; }
+  .platform .icon { font-size: 22px; }
+  .platform .name { font-size: 11px; font-weight: 600; margin-top: 6px; }
+  .platform .limit { font-size: 9px; color: var(--soft); margin-top: 2px; }
+
+  /* Notion-mocked DB row */
+  .notion-row { display: grid; grid-template-columns: 32px 200px 110px 120px 130px 100px; gap: 12px; padding: 10px 14px; border-bottom: 1px solid #eee; font-size: 12px; align-items: center; }
+  .notion-row.header { font-weight: 600; color: var(--soft); background: #f7f7f7; border-radius: 8px 8px 0 0; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .badge.green { background: #d4ebda; color: #1a6e3e; }
+  .badge.blue { background: #d4e3f5; color: #0a4e8c; }
+  .badge.purple { background: #e8d7f2; color: #5c2a82; }
+
+  /* Make scenario simplified */
+  .make-scenario { background: var(--bg); border-radius: 12px; padding: 28px 16px; overflow-x: auto; }
+  .make-flow { display: flex; gap: 18px; align-items: center; min-width: max-content; }
+  .make-node { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 26px; flex-shrink: 0; }
+  .make-line { width: 14px; height: 2px; background: var(--soft); flex-shrink: 0; }
+  .make-router { width: 56px; height: 56px; background: #4caf50; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px; flex-shrink: 0; box-shadow: 0 4px 12px rgba(76,175,80,.3); }
+  .branches { display: flex; flex-direction: column; gap: 12px; }
+  .branch-row { display: flex; gap: 14px; align-items: center; }
+
+  /* Cost log */
+  .cost-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .cost-table th, .cost-table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #eee; }
+  .cost-table th { background: #f7f7f7; color: var(--soft); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .cost-table td.money { font-weight: 600; color: var(--openai); text-align: right; }
+</style>
+</head>
+<body>
+<div class="grid">
+
+  <!-- 01: Pipeline architecture -->
+  <section class="scene" id="s01">
+    <h2>01 — Architecture: Notion → AI → Multi-channel</h2>
+    <div class="arch">
+      <div class="node notion">Notion DB</div>
+      <span class="arrow">→</span>
+      <div class="node make">Make.com<br><small>writer cron</small></div>
+      <span class="arrow">→</span>
+      <div class="node openai">GPT-4o-mini<br><small>1 call → 8 fields</small></div>
+      <span class="arrow">→</span>
+      <div class="node dalle">DALL-E 3<br><small>card image</small></div>
+      <span class="arrow">→</span>
+      <div class="node notion">Notion DB<br><small>16 fields saved</small></div>
+      <span class="arrow">→</span>
+      <div class="node make">Router</div>
+    </div>
+    <div class="arch" style="margin-top:14px">
+      <div class="node tg">Telegram</div>
+      <div class="node ig">Instagram</div>
+      <div class="node li">LinkedIn RU</div>
+      <div class="node li">LinkedIn EN</div>
+      <div class="node pin">Pinterest</div>
+      <div class="node threads">Threads</div>
+      <div class="node x">X / Twitter</div>
+    </div>
+  </section>
+
+  <!-- 02: Card preview -->
+  <section class="scene" id="s02">
+    <h2>02 — Generated card (1080×1350, Pillow + real brand logos)</h2>
+    <div class="card-preview">
+      <div class="top">
+        <div>
+          <div class="name">Grammarly</div>
+          <div class="domain">grammarly.com</div>
+        </div>
+        <div class="logo" style="background: #15c39a; color: white;">G</div>
+      </div>
+      <div class="desc">AI editor for text in English: grammar, style, tone, paraphrase. Works inside any app — email, Slack, browser.</div>
+      <div class="divider"></div>
+      <div class="stats">
+        <div class="stat"><div class="stat-label">time saved</div><div class="stat-value">8 h/wk</div></div>
+        <div class="stat"><div class="stat-label">setup</div><div class="stat-value">30 sec</div></div>
+        <div class="stat"><div class="stat-label">pricing</div><div class="stat-value">Free · $12</div></div>
+      </div>
+      <div class="footer">
+        <div class="brand">AI Content Factory</div>
+        <div class="tagline">Simple AI tools for small business growth</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03: 7 platforms grid -->
+  <section class="scene" id="s03">
+    <h2>03 — 7 channel adapters in one library</h2>
+    <div class="platforms">
+      <div class="platform" style="border-top:3px solid var(--tg)"><div class="icon">📱</div><div class="name">Telegram</div><div class="limit">HTML · 1024c · ты</div></div>
+      <div class="platform" style="border-top:3px solid var(--ig)"><div class="icon">📸</div><div class="name">Instagram</div><div class="limit">plain · 2200c · 8-10 #</div></div>
+      <div class="platform" style="border-top:3px solid var(--pin)"><div class="icon">📌</div><div class="name">Pinterest</div><div class="limit">title 100 + 500c</div></div>
+      <div class="platform" style="border-top:3px solid var(--li)"><div class="icon">💼</div><div class="name">LinkedIn RU</div><div class="limit">plain · 3000c · вы</div></div>
+      <div class="platform" style="border-top:3px solid var(--li)"><div class="icon">🌍</div><div class="name">LinkedIn EN</div><div class="limit">plain · 3000c · you</div></div>
+      <div class="platform" style="border-top:3px solid var(--threads)"><div class="icon">🧵</div><div class="name">Threads</div><div class="limit">plain · 500c</div></div>
+      <div class="platform" style="border-top:3px solid var(--x)"><div class="icon">🐦</div><div class="name">X thread</div><div class="limit">6 × 280c</div></div>
+    </div>
+  </section>
+
+  <!-- 04: Notion DB schema -->
+  <section class="scene" id="s04">
+    <h2>04 — Notion Tools_Catalog schema (15 platform-specific fields)</h2>
+    <div class="notion-row header">
+      <span></span>
+      <span>Tool Name</span>
+      <span>Stage</span>
+      <span>Published To</span>
+      <span>Last writer run</span>
+      <span>Score</span>
+    </div>
+    <div class="notion-row"><span>📝</span><span><strong>Grammarly</strong></span><span><span class="badge green">published</span></span><span><span class="badge blue">7 channels</span></span><span>2026-05-09 14:02</span><span class="money">8.4 / 10</span></div>
+    <div class="notion-row"><span>🎨</span><span><strong>Canva</strong></span><span><span class="badge green">published</span></span><span><span class="badge blue">7 channels</span></span><span>2026-05-09 13:48</span><span class="money">9.1 / 10</span></div>
+    <div class="notion-row"><span>⚡</span><span><strong>Make</strong></span><span><span class="badge green">published</span></span><span><span class="badge blue">7 channels</span></span><span>2026-05-09 13:33</span><span class="money">8.7 / 10</span></div>
+    <div class="notion-row"><span>🔗</span><span><strong>Zapier</strong></span><span><span class="badge green">published</span></span><span><span class="badge blue">6 channels</span></span><span>2026-05-09 13:21</span><span class="money">8.2 / 10</span></div>
+    <div class="notion-row"><span>🎬</span><span><strong>CapCut</strong></span><span><span class="badge purple">post_done</span></span><span><span class="badge blue">queued</span></span><span>2026-05-09 12:55</span><span class="money">7.9 / 10</span></div>
+  </section>
+
+  <!-- 05: Make scenario simplified -->
+  <section class="scene" id="s05">
+    <h2>05 — Make.com showcase scenario (60 modules, 5 platform branches)</h2>
+    <div class="make-scenario">
+      <div class="make-flow">
+        <div class="make-node" style="background:#000">N</div>
+        <div class="make-line"></div>
+        <div class="make-node" style="background:var(--openai)">🤖</div>
+        <div class="make-line"></div>
+        <div class="make-node" style="background:#7b3ff2">{}</div>
+        <div class="make-line"></div>
+        <div class="make-node" style="background:var(--openai)">🎨</div>
+        <div class="make-line"></div>
+        <div class="make-node" style="background:#a78bfa">💤</div>
+        <div class="make-line"></div>
+        <div class="make-node" style="background:#000">N</div>
+        <div class="make-line"></div>
+        <div class="make-router">⤴</div>
+        <div class="make-line"></div>
+        <div class="branches">
+          <div class="branch-row">
+            <div class="make-node" style="background:var(--tg);width:40px;height:40px;font-size:18px">✈️</div>
+            <span style="font-size:12px;color:var(--soft)">Telegram (6 modules) →</span>
+            <div class="make-node" style="background:#000;width:36px;height:36px;font-size:16px">N</div>
+            <span style="font-size:12px;color:var(--soft)">→ analytics</span>
+          </div>
+          <div class="branch-row">
+            <div class="make-node" style="background:var(--ig);width:40px;height:40px;font-size:18px">📸</div>
+            <span style="font-size:12px;color:var(--soft)">Instagram via Buffer (12 modules, 2 image variants)</span>
+          </div>
+          <div class="branch-row">
+            <div class="make-node" style="background:var(--li);width:40px;height:40px;font-size:18px">💼</div>
+            <span style="font-size:12px;color:var(--soft)">LinkedIn RU + EN (14 modules, Iterator + Aggregator)</span>
+          </div>
+          <div class="branch-row">
+            <div class="make-node" style="background:var(--pin);width:40px;height:40px;font-size:18px">📌</div>
+            <span style="font-size:12px;color:var(--soft)">Pinterest (9 modules, vertical 1000×1500 pin)</span>
+          </div>
+          <div class="branch-row">
+            <div class="make-node" style="background:var(--threads);width:40px;height:40px;font-size:18px">🧵</div>
+            <span style="font-size:12px;color:var(--soft)">Threads + X (10 modules, length validate + Slack)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06: Cost log -->
+  <section class="scene" id="s06">
+    <h2>06 — Per-run cost log (OpenAI + Make ops)</h2>
+    <table class="cost-table">
+      <tr><th>Tool</th><th>Model</th><th>In</th><th>Out</th><th>Make ops</th><th>Cost</th></tr>
+      <tr><td>Grammarly</td><td>gpt-4o-mini</td><td>1,824</td><td>3,901</td><td>14</td><td class="money">$0.0044</td></tr>
+      <tr><td>Canva</td><td>gpt-4o-mini</td><td>1,720</td><td>3,612</td><td>14</td><td class="money">$0.0041</td></tr>
+      <tr><td>Make.com</td><td>gpt-4o-mini</td><td>1,985</td><td>4,015</td><td>15</td><td class="money">$0.0047</td></tr>
+      <tr><td>Zapier</td><td>gpt-4o-mini</td><td>1,768</td><td>3,820</td><td>14</td><td class="money">$0.0043</td></tr>
+      <tr><td>CapCut</td><td>gpt-4o-mini</td><td>1,902</td><td>3,990</td><td>14</td><td class="money">$0.0046</td></tr>
+      <tr><td colspan="5" style="text-align:right;font-weight:600">Average cost per tool review:</td><td class="money">$0.0044</td></tr>
+    </table>
+    <p style="margin-top:14px;color:var(--soft);font-size:12px">Producing one fully-formatted 7-channel package costs less than half a cent. DALL-E 3 image generation included in Make ops budget.</p>
+  </section>
+
+  <!-- 07: Niche rotation hint -->
+  <section class="scene" id="s07">
+    <h2>07 — Niche-rotation analyzer (prevents repetitive content)</h2>
+    <pre style="background:var(--bg);padding:20px;border-radius:12px;font:13px/1.5 'SF Mono',monospace;color:var(--navy);overflow-x:auto">
+$ python -m app.niche_history
+
+=== Niche frequency (last 30 days) ===
+  Restaurant / cafe         <span style="color:#c13584">█████████</span> 4
+  Beauty salon              <span style="color:#0a66c2">██████</span> 2
+  Event agency              <span style="color:#c13584">█████████</span> 4
+  E-commerce store          <span style="color:#0a66c2">██████</span> 2
+  Local service             <span style="color:#0a66c2">██████</span> 2
+  Fitness studio            <span style="color:#0a66c2">██████</span> 2
+  Freelancer                <span style="color:#0a66c2">██████</span> 2
+  School / courses          <span style="color:#0a66c2">██████</span> 2
+  Marketing agency          <span style="color:#10a37f">███</span> 1
+  Healthcare clinic         <span style="color:#10a37f">███</span> 1
+
+=== Hint for writer ===
+Used often: Event agency (4), Restaurant / cafe (4).
+Less used: Beauty salon (2), E-commerce store (2), Fitness (2), School (2), Freelancer (2),
+           Local service (2), Marketing agency (1), Healthcare clinic (1).
+PICK 3 niches with priority on least-used. Avoid Event + Restaurant pair.</pre>
+  </section>
+
+  <!-- 08: Slack notifications -->
+  <section class="scene" id="s08">
+    <h2>08 — Operational signal: Slack notifications on every stage</h2>
+    <div style="background:#1a1d21;color:#d1d2d3;padding:20px;border-radius:8px;font:13px/1.6 -apple-system,system-ui,sans-serif">
+      <div style="border-left:3px solid var(--openai);padding:8px 12px;background:#222529;margin-bottom:8px"><strong>#content-factory</strong> · ai-bot · 14:02<br>✅ Text generated for <strong>Grammarly</strong> (8 platform variants, 5,725 tokens, $0.0044)</div>
+      <div style="border-left:3px solid var(--openai);padding:8px 12px;background:#222529;margin-bottom:8px"><strong>#content-factory</strong> · ai-bot · 14:03<br>🎨 Visuals ready for <strong>Grammarly</strong> (DALL-E 3 + branded card, 1.8 MB)</div>
+      <div style="border-left:3px solid var(--tg);padding:8px 12px;background:#222529;margin-bottom:8px"><strong>#content-factory</strong> · ai-bot · 14:04<br>📱 TG published: t.me/your_channel/118</div>
+      <div style="border-left:3px solid var(--ig);padding:8px 12px;background:#222529;margin-bottom:8px"><strong>#content-factory</strong> · ai-bot · 14:05<br>📸 IG scheduled via Buffer · scheduled_at: 16:00 GMT</div>
+      <div style="border-left:3px solid #f4a637;padding:8px 12px;background:#222529"><strong>#manual-publish</strong> · ai-bot · 14:05<br>🧵 Threads draft ready (paste manually):<br><em style="color:#8d8d8d">"Who takes notes on your calls? A week later the details blur..."</em></div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
