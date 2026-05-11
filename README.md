@@ -12,7 +12,7 @@
 
 ## 🎬 What it does
 
-One GPT call per tool → 8 platform-specific text variants → DALL-E card + Pillow overlay with real brand logo → fan-out via Make.com to 7 publishing channels. Live deployment publishes one tool review every 4 hours to a real Telegram channel (8 reviews shipped while building).
+One GPT call per tool → 8 platform-specific text variants → DALL-E card + Pillow overlay with real brand logo → fan-out via Make.com to 7 publishing channels. The pipeline is scheduled (cron 4h) and was end-to-end tested on a private Telegram channel during development; 8 tool reviews were shipped through the live pipeline.
 
 ## 📸 Screenshots
 

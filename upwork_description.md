@@ -10,23 +10,21 @@ Alternative shorter variants:
 
 ## Description (~230 words)
 
-An end-to-end automation that turns a single Notion row into a fully branded post on **7 social channels** — Telegram, Instagram, LinkedIn (RU + EN), Pinterest, Threads, and X / Twitter — in under 30 seconds and at a cost of $0.0044 per package.
+An end-to-end automation that turns a single Notion row into a fully branded post on **7 social channels** — Telegram, Instagram, LinkedIn (RU + EN), Pinterest, Threads, and X / Twitter — in under 30 seconds.
 
-Built for small-business content owners who want consistent multi-channel publishing without a content team. The pipeline runs entirely on Make.com + Python with Notion as the content database. One GPT-4o-mini call produces **all 8 platform versions at once** (instead of 8 separate calls), and DALL-E 3 + a Pillow renderer create a 1080×1350 card with the real brand logo for every tool reviewed.
+Built for small-business content owners who want consistent multi-channel publishing without a content team. The pipeline runs entirely on Make.com + Python with Notion as the content database. One GPT-4o-mini call produces **all 8 platform versions at once** (instead of 8 separate calls); image generation (DALL-E 3) and a Pillow renderer produce a 1080×1350 card with the real brand logo for each tool reviewed.
 
 🚀 **Highlights:**
 - 🤖 Single GPT call → 8 platform variants (Telegram HTML, Instagram, LinkedIn RU+EN, Pinterest, Threads, X thread)
 - 🎨 1080×1350 card generator with real brand logos (3-tier fallback: App Store → SVG → favicon)
-- 🔀 60-module Make.com showcase scenario with router fan-out + Iterator/Aggregator pattern
+- 🔀 Make.com showcase blueprint (`make_blueprints/00_factory_overview.py`) — router fan-out into 5 platform branches with Iterator/Aggregator pattern, built programmatically from Python
 - 📊 Niche-rotation analyzer prevents repetitive content over time
-- 💰 $0.0044 per fully-rendered tool review (avg across 8 published)
+- 💰 ~$0.0044 text-generation cost per content package (8-platform GPT call), excluding optional DALL-E 3 image generation
 - 🧪 18 smoke tests passing, ruff-clean, Docker-ready, CI on 3 Python versions
 - ⚙️ All secrets via env vars (`app/config.py`) — zero hardcoded IDs
 
-**Production track record:** 8 tool reviews shipped to a live Telegram channel while building (ChatGPT, Canva, Make, Zapier, Notion AI, Grammarly, CapCut, Fireflies).
-
-**Live demo:** GitHub repo (link in profile) — Make.com scenario screenshots + Pillow card output included.
-**Code:** GitHub repo (link in profile).
+**Demo evidence:** Make.com scenario screenshots + Pillow card samples + Notion CMS schema seeds are included in the repo. Architecture-mockup screenshots (`screenshots/sample_*.png`) are HTML-rendered and clearly labelled as such.
+**Code:** https://github.com/KirillHat/ai-content-factory
 
 ## Skills / tags
 
@@ -34,8 +32,7 @@ Built for small-business content owners who want consistent multi-channel publis
 
 ## Suggested cover & gallery images
 
-- **Cover image:** `screenshots/sample_make_scenario.png` — the 60-module Make.com canvas with 5 platform branches
-- **Animated demo:** record `screenshots/mockups.html` scrolling through the 8 scenes (planned)
+- **Cover image:** `screenshots/all_screens.png` — grid of architecture, card preview, and platform fan-out
 - **Gallery (6 shots in this order):**
   1. `screenshots/sample_make_scenario.png` — full Make canvas (architecture at a glance)
   2. `screenshots/sample_router_fanout.png` — router fan-out into 5 platform branches
@@ -58,10 +55,10 @@ Built for small-business content owners who want consistent multi-channel publis
 
 > Hey {{name}}, thanks for reaching out!
 >
-> The portfolio repo has the full source + Make.com scenarios + a 60-module showcase scenario with screenshots. Live deployment shipped 8 tool reviews to a Telegram channel during development.
+> The portfolio repo has the full source + Make.com blueprints (one Python file per scenario) + a showcase blueprint that builds a 60-module router fan-out scenario covering 5 platform branches.
 >
 > Quick links:
-> - Code: GitHub repo (link in my Upwork profile)
+> - Code: https://github.com/KirillHat/ai-content-factory
 > - Architecture diagram + card mocks: `screenshots/mockups.html` in the repo
 > - Make scenarios: `make_blueprints/` (one .py per scenario, run `python -m make_blueprints.03_writer` to deploy)
 >
