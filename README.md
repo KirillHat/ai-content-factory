@@ -56,7 +56,7 @@ One GPT call per tool → 8 platform-specific text variants → DALL-E card + Pi
 - **All secrets via env vars** (`app/config.py`) — never hardcoded
 - **One-time setup scripts** in `scripts/` (Notion DB creation + seeding + weekly backup)
 - **Slack notifications** at each stage for transparency
-- **Cost log per run** — average $0.0044 per tool (5 platform versions)
+- **Cost log per run** — average $0.0044 per tool for the 8-platform GPT-4o-mini call (DALL-E 3 image generation billed separately, ~$0.04/image at standard quality)
 - **18 smoke tests passing** covering renderers, card generator, blueprint builders, config
 
 ## 🧱 Stack
