@@ -32,14 +32,13 @@ Built for small-business content owners who want consistent multi-channel publis
 
 ## Suggested cover & gallery images
 
-- **Cover image:** `screenshots/all_screens.png` — grid of architecture, card preview, and platform fan-out
-- **Gallery (6 shots in this order):**
+- **Cover image:** `screenshots/all_screens.png` — grid of architecture, card preview, and platform fan-out (regenerate via `python screenshots/render.py`)
+- **Gallery (5 shots in this order):**
   1. `screenshots/sample_make_scenario.png` — full Make canvas (architecture at a glance)
-  2. `screenshots/sample_router_fanout.png` — router fan-out into 5 platform branches
-  3. `screenshots/sample_linkedin_branch.png` — LinkedIn Iterator + Aggregator pattern close-up
-  4. `screenshots/02_card_preview.png` — sample 1080×1350 card with brand logo (generated from mockups.html)
-  5. `screenshots/03_seven_platforms.png` — 7 platform adapters grid
-  6. `screenshots/06_cost_log.png` — per-run cost log (~$0.0044 / tool)
+  2. `screenshots/sample_linkedin_branch.png` — LinkedIn Iterator + Aggregator pattern close-up
+  3. `screenshots/02_card_preview.png` — sample 1080×1350 card with brand logo (generated from mockups.html)
+  4. `screenshots/03_seven_platforms.png` — 7 platform adapters grid
+  5. `screenshots/06_cost_log.png` — per-run cost log (~$0.0044 / tool)
 
 ## Suggested rate / pricing
 

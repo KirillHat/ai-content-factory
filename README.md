@@ -18,12 +18,8 @@ One GPT call per tool → 8 platform-specific text variants → DALL-E card + Pi
 
 <table>
   <tr>
-    <td><img src="screenshots/sample_make_scenario.png" width="320"><br><b>60-module Make scenario</b><br><sub>5 platform branches with router fan-out + Iterator/Aggregator</sub></td>
-    <td><img src="screenshots/sample_router_fanout.png" width="320"><br><b>Router → 5 platform branches</b><br><sub>Asymmetric branch sizes reflect real platform complexity</sub></td>
-  </tr>
-  <tr>
-    <td><img src="screenshots/sample_linkedin_branch.png" width="320"><br><b>LinkedIn dual-language branch</b><br><sub>Iterator over [RU, EN] + Aggregator merging results</sub></td>
-    <td><img src="screenshots/sample_prep_stage.png" width="320"><br><b>Prep stage (linear)</b><br><sub>Notion → GPT writer → DALL-E → save 16 fields</sub></td>
+    <td><img src="screenshots/sample_make_scenario.png" width="420"><br><b>60-module Make scenario</b><br><sub>Prep stage + router fan-out into 5 platform branches (asymmetric, 6 / 12 / 14 / 9 / 10 modules)</sub></td>
+    <td><img src="screenshots/sample_linkedin_branch.png" width="420"><br><b>LinkedIn dual-language branch</b><br><sub>Iterator over [RU, EN] + Aggregator merging results</sub></td>
   </tr>
 </table>
 
